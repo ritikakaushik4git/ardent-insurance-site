@@ -1,1 +1,175 @@
-<your-html-code-here>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ardent Insurance Consultancy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #0056a6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      background: #003d73;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 20px;
+    }
+    h2 {
+      color: #0056a6;
+    }
+    .content {
+      max-width: 900px;
+      margin: auto;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .image-right {
+      float: right;
+      max-width: 200px;
+      margin-left: 20px;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    input, textarea {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px;
+      background: #0056a6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #004080;
+    }
+    .confirmation {
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+  <script>
+    function showConfirmation(event) {
+      event.preventDefault();
+      const form = event.target;
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          document.getElementById('confirmation').style.display = 'block';
+          form.reset();
+        } else {
+          alert('There was an issue submitting the form. Please try again later.');
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>ARDENT INSURANCE CONSULTANCY</h1>
+    <p>The Care and Compassion You Need</p>
+  </header>
+
+  <nav>
+    <a href="#journey">Journey</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#services">Services</a>
+    <a href="#why-us">Why Choose Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="journey" class="content">
+    <h2>Journey</h2>
+    <p>We started April 2022 after gaining experience of 19 years in the health insurance industry. We did Rs. 10 Cr. in the last three years with the team of 50 members. At first, we started with 3–4 people and now we are a team of 150. In 2025-26 we are going to do business of 7 Cr. and we are maximizing our team strength to 250 members.</p>
+  </section>
+
+  <section id="achievements" class="content">
+    <h2>Achievements</h2>
+    <ul>
+      <li>Pan India No.1 ranking in Care Health Insurance and Tata AIG Insurance.</li>
+      <li>Created history by logging 101 NOPs in Care Health and 113 NOPs in Tata AIG in a day.</li>
+      <li>Achieved the biggest award named WPL in Care Health Insurance in 2023-24.</li>
+      <li>Achieved more than 300 trophies in different categories in three years of journey.</li>
+    </ul>
+  </section>
+
+  <section id="services" class="content">
+    <h2>Services</h2>
+    <ul>
+      <li>Healthcare assistance with experienced team</li>
+      <li>100% claim support, also ombudsman support</li>
+      <li>Sales & backend support</li>
+      <li>Pre-underwriting</li>
+      <li>Agent development and motivation</li>
+      <li>Health awareness sessions</li>
+    </ul>
+  </section>
+
+  <section id="why-us" class="content">
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li>Vast experience in the health industry</li>
+      <li>We settle claims more than 30 lac in a day</li>
+      <li>We educate our clients on how to take benefits of their policies after purchasing</li>
+      <li>We interact with our clients once a year with a fruitful related session</li>
+    </ul>
+  </section>
+
+  <section class="content">
+    <img src="/mnt/data/WhatsApp Image 2025-04-23 at 12.21.13_eb0bc15e.jpg" alt="Consultant" class="image-right">
+  </section>
+
+  <section id="contact" class="content">
+    <h2>Contact Us</h2>
+    <form action="https://formspree.io/f/mbjnodqq" method="POST" onsubmit="showConfirmation(event)">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p id="confirmation" class="confirmation">Thank you for your message! We'll get back to you shortly.</p>
+  </section>
+
+</body>
+</html>
